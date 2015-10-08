@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1= title
+    form(action="/", method="get")
+        input(type="text", name="q", class="search-text", value="<script>alert(1)</script>")
+        input(type="button", value="xss", class="xss")
+        input(type="submit", value="search")
+    if query
+        p(id="result") 你搜索的是 #{query}
+    else
+        p(id="result") 请输入搜索内容
+    script(src="/javascripts/dist/xss.js")
