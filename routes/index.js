@@ -5,7 +5,6 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
     var query = req.query.q;
     res.render('index', {
-        title: '搜索大全',
         query : query
     });
 });
@@ -13,6 +12,17 @@ router.get('/', function (req, res, next) {
 router.post('/q', function (req, res, next) {
     var query = req.body.q;
     res.send(query);
+});
+
+router.post('/comment', function (req, res, next) {
+    var comment = req.body.comment;
+    res.send(comment);
+});
+
+router.get('/cookie/:cookie', function (req, res, next) {
+    var cookie = req.params.cookie;
+    console.log(cookie);
+    res.redirect(req.url);
 });
 
 
