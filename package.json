@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/",
-    "debug": "node --debug ./bin/www"
+    "start": "node ./bin/www & gulp",
+    "debug": "node --debug ./bin/www & gulp"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
